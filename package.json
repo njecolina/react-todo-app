@@ -1,5 +1,5 @@
 {
-  "homepage": "https://njecolina.github.io/react-todo-app",
+  "homepage": "https://njecolina.github.io/react-todo-app/",
   "name": "reacttodolist",
   "private": true,
   "version": "0.0.0",
@@ -10,7 +10,7 @@
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "vite build && gh-pages -d dist"
   },
   "dependencies": {
     "react": "^18.2.0",
