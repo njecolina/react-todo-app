@@ -49,6 +49,12 @@ export default function App() {
         <center>To Do List:</center>
       </h1>
       <TodoList todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo} />
+      <p>About:</p>
+      <p>
+        This is simple React app demo, where you can write down needed tasks and
+        they will be saved locally to your device, whenever you open this page,
+        until you delete them by yourself.
+      </p>
     </>
   );
 }
