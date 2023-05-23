@@ -50,6 +50,14 @@ footer {
   text-align: center;
 }
 
+img {
+  max-width: 300px;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 @media only screen and (max-width: 600px) {
   h2 {
     font-size: 18px;
