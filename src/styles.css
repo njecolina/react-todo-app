@@ -1,6 +1,7 @@
 * {
   font-family: Arial, Helvetica, sans-serif;
   box-sizing: border-box;
+  justify-content: center;
 }
 
 body {
@@ -9,7 +10,6 @@ body {
   max-width: 400px;
   padding: 1rem;
   margin: 0 auto;
-  justify-content: center;
 }
 
 p {
