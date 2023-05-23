@@ -2,6 +2,7 @@
   font-family: Arial, Helvetica, sans-serif;
   box-sizing: border-box;
   justify-content: center;
+  text-align: center;
 }
 
 body {
@@ -12,9 +13,9 @@ body {
   margin: 0 auto;
 }
 
-p {
+/* p {
   text-align: center;
-}
+} */
 
 .new-item-form {
   display: flex;
