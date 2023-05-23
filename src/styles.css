@@ -11,6 +11,15 @@ body {
   margin: 0 auto;
 }
 
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.container p {
+  margin: 0;
+}
+
 .new-item-form {
   display: flex;
   flex-direction: column;
