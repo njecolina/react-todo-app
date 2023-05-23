@@ -5,6 +5,11 @@ import { copyFileSync } from "fs";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
+  server: {
+    mimeTypes: {
+      "text/javascript": ["jsx"], // Dodana konfiguracija za .jsx datoteke
+    },
+  },
   build: {
     rollupOptions: {
       output: {
