@@ -9,6 +9,7 @@ body {
   max-width: 400px;
   padding: 1rem;
   margin: 0 auto;
+  justify-content: center;
 }
 
 p {
@@ -88,7 +89,6 @@ p {
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
-  justify-content: center;
 }
 
 .list li {
