@@ -88,6 +88,7 @@ p {
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
+  justify-content: center;
 }
 
 .list li {
