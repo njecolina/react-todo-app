@@ -7,6 +7,12 @@
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="./src/main.jsx"></script>
+    <script type="module" src="/@vite/client"></script>
+    <script type="module">
+      import { render } from "https://unpkg.com/react-dom@17/umd/react-dom.development.js";
+      import App from "./src/main.jsx";
+
+      render(<App />, document.getElementById("root"));
+    </script>
   </body>
 </html>

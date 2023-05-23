@@ -1,9 +1,8 @@
+import reactRefresh from "@vitejs/plugin-react-refresh";
 import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react-swc";
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [reactRefresh()],
   server: {
     proxy: {
       "/.nojekyll": {
@@ -15,6 +14,7 @@ export default defineConfig({
     },
     hmr: {
       protocol: "ws",
+      injectHost: true,
     },
     fs: {
       strict: false,
@@ -33,13 +33,14 @@ export default defineConfig({
       allow: ["."],
     },
     mimeTypes: {
-      "text/jsx": "javascript",
+      "text/jsx": ["js"],
     },
   },
   build: {
     rollupOptions: {
-      output: {
-        manualChunks: undefined,
+      input: {
+        main: "./src/main.jsx",
+        reactdemo: "./reactdemo.html",
       },
     },
   },
