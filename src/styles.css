@@ -11,13 +11,8 @@ body {
   margin: 0 auto;
 }
 
-.container {
-  display: flex;
-  justify-content: center;
-}
-
-.container p {
-  margin: 0;
+p {
+  text-align: center;
 }
 
 .new-item-form {
