@@ -15,9 +15,10 @@ export function NewTodoForm({ onSubmit }) {
   return (
     <form onSubmit={handleSubmit} className="new-item-form">
       <div className="form-row">
-        <h1 className="header">
-          <center>REACT TO DO APP DEMO</center>
-        </h1>
+        <p>
+          <a href="https://njecolina.github.io">Go Back To Homepage</a>
+        </p>
+        <h1 className="header">REACT TO DO APP DEMO</h1>
         {/* <label htmlFor="item">Type NEW TO DO</label> */}
         <input
           value={newItem}
