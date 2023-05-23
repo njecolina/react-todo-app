@@ -13,10 +13,6 @@ body {
   margin: 0 auto;
 }
 
-/* p {
-  text-align: center;
-} */
-
 .new-item-form {
   display: flex;
   flex-direction: column;
@@ -72,13 +68,11 @@ body {
   font-size: 1.5rem;
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
-  /* justify-content: center; */
 }
 
 .list {
   margin: 0;
   padding: 0;
-  /*margin-left: 1rem;*/
   list-style: none;
 }
 
