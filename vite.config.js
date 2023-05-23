@@ -1,5 +1,4 @@
 import { defineConfig } from "vite";
-import { createVuePlugin } from "vite-plugin-vue2";
 import react from "@vitejs/plugin-react-swc";
 
 // https://vitejs.dev/config/
@@ -34,10 +33,7 @@ export default defineConfig({
       allow: ["."],
     },
     mimeTypes: {
-      "text/javascript": ["js", "mjs"],
-      "text/css": "css",
-      "text/html": ["html", "htm"],
-      "application/javascript": ["jsx"],
+      "text/jsx": "javascript",
     },
   },
   build: {
