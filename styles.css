@@ -48,12 +48,29 @@ footer {
   text-align: center;
 }
 
+header,
+p {
+  color: white;
+  text-shadow: 1px 1px black;
+}
+
 img {
   max-width: 300px;
   height: auto;
   display: block;
   margin-left: auto;
   margin-right: auto;
+  border: 1px solid black;
+  animation: slideLeft 1s ease-in-out;
+}
+
+@keyframes slideLeft {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
 @media only screen and (max-width: 600px) {
