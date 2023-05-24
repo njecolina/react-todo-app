@@ -18,6 +18,7 @@ main {
 
 section {
   margin-bottom: 30px;
+  border-radius: 5px;
 }
 
 h2 {
