@@ -1,8 +1,9 @@
 body {
   font-family: Helvetica, sans-serif;
-  margin: 0;
+  margin: auto;
   padding: 0;
   background-color: grey;
+  justify-content: center;
 }
 
 header {
@@ -14,11 +15,14 @@ header {
 
 main {
   padding: 20px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
 }
 
 section {
   margin-bottom: 30px;
-  border-radius: 5px;
 }
 
 h2 {
@@ -28,9 +32,12 @@ h2 {
 }
 
 .grid-container {
-  display: grid;
+  display: block;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-gap: 10px;
+  border-radius: 5px;
+  overflow: hidden;
+  justify-content: center;
 }
 
 a {
@@ -39,6 +46,15 @@ a {
   padding: 20px;
   text-decoration: none;
   color: #333;
+  text-align: center;
+}
+
+a:hover {
+  display: block;
+  background-color: #333;
+  padding: 20px;
+  text-decoration: none;
+  color: #f2f2f2;
   text-align: center;
 }
 
