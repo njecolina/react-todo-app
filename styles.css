@@ -63,6 +63,15 @@ a:hover {
   text-align: center;
 }
 
+a:active {
+  display: block;
+  background-color: #e8372d;
+  padding: 20px;
+  text-decoration: none;
+  color: #f2f2f2;
+  text-align: center;
+}
+
 footer {
   background-color: #333;
   color: #fff;
