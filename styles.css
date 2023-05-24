@@ -2,7 +2,8 @@ body {
   font-family: Helvetica, sans-serif;
   margin: auto;
   padding: 0;
-  background-color: grey;
+  background-image: url("pics/pozadina.jpg");
+  background-repeat: repeat;
   justify-content: center;
 }
 
@@ -19,6 +20,7 @@ main {
   margin-left: auto;
   margin-right: auto;
   justify-content: center;
+  text-align: center;
 }
 
 section {
@@ -29,8 +31,11 @@ h2 {
   font-size: 20px;
   margin-bottom: 10px;
   text-align: center;
+  color: #fff;
 }
-
+p2 {
+  color: #fff;
+}
 .grid-container {
   display: block;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
