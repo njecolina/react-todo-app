@@ -1,12 +1,25 @@
-body {
-  font-family: Helvetica, sans-serif;
-  margin: auto;
+/* Resetiranje osnovnih stilova */
+* {
+  box-sizing: border-box;
+  margin: 0;
   padding: 0;
-  background-image: url("pics/pozadina.jpg");
-  background-repeat: repeat;
-  justify-content: center;
 }
 
+/* Globalni stilovi */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  line-height: 1.5;
+  color: #333;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Header */
 header {
   background-color: #333;
   color: #fff;
@@ -14,64 +27,49 @@ header {
   text-align: center;
 }
 
-main {
-  padding: 20px;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-  justify-content: center;
-  text-align: center;
+header img {
+  max-width: 100%;
+  height: auto;
 }
 
-section {
-  margin-bottom: 30px;
+/* Main */
+main {
+  text-align: center;
 }
 
 h2 {
   font-size: 22px;
   margin-bottom: 10px;
-  text-align: center;
-  color: #fff;
+  color: #333;
 }
-p2 {
-  color: #fff;
+
+p {
+  margin-bottom: 20px;
 }
+
+/* Grid */
 .grid-container {
-  display: block;
+  display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-gap: 10px;
-  border-radius: 5px;
-  overflow: hidden;
-  justify-content: center;
 }
 
 a {
   display: block;
-  background-color: #f2f2f2;
+  background-color: #fff;
   padding: 20px;
   text-decoration: none;
   color: #333;
-  text-align: center;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
 }
 
 a:hover {
-  display: block;
-  background-color: #333;
-  padding: 20px;
-  text-decoration: none;
-  color: #f2f2f2;
-  text-align: center;
-}
-
-a:active {
-  display: block;
   background-color: #e8372d;
-  padding: 20px;
-  text-decoration: none;
-  color: #f2f2f2;
-  text-align: center;
+  color: #fff;
 }
 
+/* Footer */
 footer {
   background-color: #333;
   color: #fff;
@@ -79,24 +77,22 @@ footer {
   text-align: center;
 }
 
-img {
-  max-width: 300px;
+footer img {
+  max-width: 100%;
   height: auto;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  animation: slideLeft 1s ease-in-out;
+  margin: 10px 0;
+  border-radius: 50%;
 }
 
-@keyframes slideLeft {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(0);
-  }
+footer p {
+  margin-bottom: 10px;
 }
 
+footer a {
+  color: #fff;
+}
+
+/* Media query za manje ekrane */
 @media only screen and (max-width: 600px) {
   h2 {
     font-size: 18px;
