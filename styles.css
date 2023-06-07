@@ -3,7 +3,6 @@ body {
   margin: auto;
   padding: 0;
   background-image: url("pics/pozadina.jpg");
-  loading: lazy;
   background-repeat: repeat;
   justify-content: center;
 }
