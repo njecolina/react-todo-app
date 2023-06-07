@@ -2,6 +2,7 @@ body {
   font-family: Helvetica, sans-serif;
   margin: auto;
   padding: 0;
+  background-color: gray;
   background-image: url("pics/pozadina.jpg");
   background-repeat: repeat;
   justify-content: center;
