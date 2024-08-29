@@ -149,13 +149,13 @@
         // Three.js code
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer();
+        const renderer = new THREE.WebGLRenderer({ alpha: true });
         renderer.setSize(window.innerWidth, window.innerHeight);
         document.getElementById('scene-container').appendChild(renderer.domElement);
 
         // Create a starfield
         const starsGeometry = new THREE.BufferGeometry();
-        const starsMaterial = new THREE.PointsMaterial({color: 0xFF4500, size: 0.1}); // Changed to reddish-orange
+        const starsMaterial = new THREE.PointsMaterial({color: 0xFFFFFF, size: 0.1}); // Changed back to white
 
         const starsVertices = [];
         for (let i = 0; i < 10000; i++) {
@@ -170,26 +170,53 @@
         scene.add(starField);
 
         // Add 3D objects
-        const geometry1 = new THREE.TorusGeometry(10, 3, 16, 100);
-        const material1 = new THREE.MeshBasicMaterial({color: 0xFF0000, wireframe: true}); // Red
-        const torus = new THREE.Mesh(geometry1, material1);
-        scene.add(torus);
+        const objects = [];
 
-        const geometry2 = new THREE.OctahedronGeometry(7);
-        const material2 = new THREE.MeshBasicMaterial({color: 0x000000, wireframe: true}); // Black
-        const octahedron = new THREE.Mesh(geometry2, material2);
-        octahedron.position.set(15, 0, 0);
-        scene.add(octahedron);
+        function createObject(geometry, color, x, y, z) {
+            const material = new THREE.MeshBasicMaterial({color: color, wireframe: true});
+            const mesh = new THREE.Mesh(geometry, material);
+            mesh.position.set(x, y, z);
+            scene.add(mesh);
+            objects.push({
+                mesh: mesh,
+                speed: {
+                    x: (Math.random() - 0.5) * 0.1,
+                    y: (Math.random() - 0.5) * 0.1,
+                    z: (Math.random() - 0.5) * 0.1
+                }
+            });
+            return mesh;
+        }
+
+        createObject(new THREE.TorusGeometry(5, 2, 16, 100), 0xEB1C24, 0, 0, 0);  // Red (close to logo)
+        createObject(new THREE.OctahedronGeometry(4), 0x000000, 15, 10, -10);    // Black
+        createObject(new THREE.IcosahedronGeometry(3), 0xEB1C24, -15, -10, 10);  // Red (close to logo)
+        createObject(new THREE.TetrahedronGeometry(4), 0x000000, 10, -15, 5);    // Black
+        createObject(new THREE.DodecahedronGeometry(3), 0xEB1C24, -10, 15, -5);  // Red (close to logo)
 
         camera.position.z = 30;
 
         function animate() {
             requestAnimationFrame(animate);
+            
             starField.rotation.y += 0.0002;
-            torus.rotation.x += 0.01;
-            torus.rotation.y += 0.005;
-            octahedron.rotation.x -= 0.007;
-            octahedron.rotation.y -= 0.01;
+
+            objects.forEach(obj => {
+                obj.mesh.rotation.x += 0.01;
+                obj.mesh.rotation.y += 0.01;
+                
+                obj.mesh.position.x += obj.speed.x;
+                obj.mesh.position.y += obj.speed.y;
+                obj.mesh.position.z += obj.speed.z;
+
+                // Boundary check and reverse direction if needed
+                ['x', 'y', 'z'].forEach(axis => {
+                    if (Math.abs(obj.mesh.position[axis]) > 20) {
+                        obj.speed[axis] *= -1;
+                    }
+                });
+            });
+
             renderer.render(scene, camera);
         }
         animate();
