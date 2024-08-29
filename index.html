@@ -1,91 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Njecolina Portfolio</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
+    <style>
+        body {
+            font-family: Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+            overflow: hidden;
+        }
+        #scene-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        #content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        header {
+            text-align: center;
+            padding: 20px 0;
+        }
+        header img {
+            max-width: 300px;
+            height: auto;
+        }
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        section {
+            margin-bottom: 30px;
+            background-color: rgba(51, 51, 51, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        h2 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-gap: 10px;
+        }
+        a {
+            display: block;
+            background-color: rgba(242, 242, 242, 0.8);
+            padding: 20px;
+            text-decoration: none;
+            color: #333;
+            text-align: center;
+            transition: all 0.3s ease;
+            border-radius: 5px;
+        }
+        a:hover {
+            background-color: rgba(51, 51, 51, 0.9);
+            color: #f2f2f2;
+            transform: scale(1.05);
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(51, 51, 51, 0.7);
+        }
+        footer img {
+            max-width: 200px;
+            height: auto;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+    <div id="scene-container"></div>
+    <div id="content">
+        <header>
+            <img src="./pics/NjecolinaLogo.png" alt="Njecolina Portfolio"/>
+        </header>
+        <main>
+            <section>
+                <h2>
+                    Hi! My name is Sonja Hranjec and I am a game and web developer, punk musician and published novelist!
+                </h2>
+                <p>Feel free to check out my work!</p>
+            </section>
+            <section>
+                <h2>..::MY BUSINESS COMPANY::..</h2>
+                <div class="grid-container">
+                    <a href="https://affordablecareentertainment.com/">Affordable Care Entertainment</a>
+                    <a href="https://affordablecaregames.com/">Affordable Care Games</a>
+                </div>
+            </section>
+            <section>
+                <h2>..::GAMES::..</h2>
+                <div class="grid-container">
+                    <a href="https://store.steampowered.com/search/?publisher=Affordable%20Care%20Games">Published PC Video Games (STEAM)</a>
+                    <a href="https://affordable.itch.io/">Published PC and homebrew NES Video Games (ITCHIO)</a>
+                    <a href="https://apps.apple.com/us/developer/sonja-hranjec/id1705936742">Published iOS Games (Apple App Store)</a>
+                    <a href="https://play.google.com/store/apps/dev?id=6429611997853742488">Published Android Games (GOOGLE PLAY)</a>
+                </div>
+            </section>
+            <section>
+                <h2>..::WEB::..</h2>
+                <div class="grid-container">
+                    <a href="https://github.com/njecolina">My Public Github Repositories</a>
+                </div>
+            </section>
+            <section>
+                <h2>..::PUNK MUSIC::..</h2>
+                <div class="grid-container">
+                    <a href="https://www.abergaz.com/">Abergaz</a>
+                </div>
+            </section>
+            <section>
+                <h2>..::NOVEL (on Croatian language)::..</h2>
+                <div class="grid-container">
+                    <a href="https://www.jesenski-turk.hr/hr/dva-tjedna-prije-treceg-svjetskog-rata-2021-sonja-hranjec">"Dva tjedna prije Trećeg svjetskog rata"</a>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <img src="./pics/SonjaHranjec.jpg" alt="Sonja Hranjec"/>
+            <p>
+                Feel free to contact me via
+                <a href="mailto:njecolina@gmail.com">njecolina@gmail.com</a>
+            </p>
+            <p>Sonja Hranjec &copy; 2024.</p>
+        </footer>
+    </div>
+    <script>
+        // Three.js code
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.getElementById('scene-container').appendChild(renderer.domElement);
 
-  <body>
-    <header>
-      <img src="./pics/NjecolinaLogo.png" alt="Njecolina Portfolio"/>
-    </header>
+        // Create a starfield
+        const starsGeometry = new THREE.BufferGeometry();
+        const starsMaterial = new THREE.PointsMaterial({color: 0xFFFFFF, size: 0.1});
 
-    <main>
-      <section>
-        <h2>
-          Hi! My name is Sonja Hranjec and I am a game and web developer, punk musician and published novelist!
-        </h2>
-        <p2>Feel free to check out my work!</p2>
-      </section>
+        const starsVertices = [];
+        for (let i = 0; i < 10000; i++) {
+            const x = (Math.random() - 0.5) * 2000;
+            const y = (Math.random() - 0.5) * 2000;
+            const z = (Math.random() - 0.5) * 2000;
+            starsVertices.push(x, y, z);
+        }
 
-      <section>
-        <h2>..::MY BUSINESS COMPANY::..</h2>
-        <div class="grid-container">
-          <a
-            href="https://affordablecareentertainment.com/"
-            >Affordable Care Entertainment</a
-          >
-          <a href="https://affordablecaregames.com/"
-            >Affordable Care Games</a
-          >
-        </div>
-      </section>
+        starsGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starsVertices, 3));
+        const starField = new THREE.Points(starsGeometry, starsMaterial);
+        scene.add(starField);
 
-      <section>
-        <h2>..::GAMES::..</h2>
-        <div class="grid-container">
-          <a
-            href="https://store.steampowered.com/search/?publisher=Affordable%20Care%20Games"
-            >Published PC Video Games (STEAM)</a
-          >
-          <a href="https://affordable.itch.io/"
-            >Published PC and homebrew NES Video Games (ITCHIO)</a
-          >
-          <a
-            href="https://apps.apple.com/us/developer/sonja-hranjec/id1705936742"
-            >Published iOS Games (Apple App Store)</a
-          >
-          <a
-            href="https://play.google.com/store/apps/dev?id=6429611997853742488"
-            >Published Android Games (GOOGLE PLAY)</a
-          >
-        </div>
-      </section>
+        camera.position.z = 5;
 
-      <section>
-        <h2>..::WEB::..</h2>
-        <div class="grid-container">
-          <a href="https://github.com/njecolina">My Public Github Repositories</a>
-        </div>
-      </section>
+        function animate() {
+            requestAnimationFrame(animate);
+            starField.rotation.y += 0.0002;
+            renderer.render(scene, camera);
+        }
+        animate();
 
-      <section>
-        <h2>..::PUNK MUSIC::..</h2>
-        <div class="grid-container">
-          <a href="https://www.abergaz.com/">Abergaz</a>
-        </div>
-      </section>
-
-      <section>
-        <h2>..::NOVEL (on Croatian language)::..</h2>
-        <div class="grid-container">
-          <a
-            href="https://www.jesenski-turk.hr/hr/dva-tjedna-prije-treceg-svjetskog-rata-2021-sonja-hranjec"
-            >"Dva tjedna prije Trećeg svjetskog rata"</a
-          >
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      <img src="./pics/SonjaHranjec.jpg" alt="Sonja Hranjec"/>
-      <p>
-        Feel free to contact me via
-        <a href="mailto:njecolina@gmail.com">njecolina@gmail.com</a>
-      </p>
-      <p>Sonja Hranjec &copy; 2024.</p>
-    </footer>
-  </body>
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
 </html>
